@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1"/>
+    <title>Phối hợp trở kháng dùng dây chêm đơn song song</title>
+    <script src="js/jsxgraphcore.js"></script>
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <link href="css/jsxgraph.css" rel="stylesheet">
+    <link href="css/style.css" rel="stylesheet">
+    <style>
+        .home-title {
+            padding: 0px 0px 25px !important;
+        }
+
+        .theory-item1 {
+            font-size: 18px
+        }
+
+        .theory-item2 {
+            grid-template-rows: 0fr 0fr 1fr 1fr 0.5fr 0.5fr;
+            border-top: 0px solid grey;
+            padding-top: 0;
+        }
+        #item-4{
+            border-left: 1px solid grey;
+        }
+        #buttons {
+            position: relative;
+            height: 40px;
+        }
+
+        #next, #previous {
+            position: absolute;
+            bottom: 11px;
+            width: 100px;
+        }
+
+        #next {
+            left: 1000px;
+        }
+
+        #previous {
+            left: 800px;
+        }
+    </style>
+</head>
+<body>
+<div class="theory">
+    <div class="home-title"> PHỐI HỢP TRỞ KHÁNG SINGLE SHUNT STUB
+    </div>
+    <div class="theory-item1" style="display: none">
+        <a href="mod_lumped-elements.html">PHTK dùng phần tử kháng </a>
+        <a class="active" href="mod_single-shun_stub.html">PHTK dùng dây chêm đơn song song</a>
+        <a href="mod_single-series_stub.html">PHTK dùng dây chêm đơn nối tiếp</a>
+        <a href="mod_double-stub.html">PHTK dùng dây chêm kép</a>
+        <a href="mod_quarter-wave.html">PHTK dùng biến áp &lambda;/4</a>
+    </div>
+    <div class="theory-item2">
+        <div id="item-10"></div>
+        <div id="item-2">
+            <div id="buttons">
+                <button id="next" class="btn btn-success">Next</button>
+                <button id="previous" class="btn btn-success">Previous</button>
+            </div>
+        </div>
+        <div id="item-3">
+            <div class="jxgbox" id="box" style="margin:0 auto"></div>
+            <div class="overlay"></div>
+            <div class="circle"></div>
+        </div>
+        <div id="item-4">
+            <h4 style="text-align: center">Các bước thực hiện</h4>
+        </div>
+        <div id="item-5">
+            <h2>KẾT QUẢ</h2>
+        </div>
+        <div id="item-6">
+            <img id="solution1" src="data/img/Solution1-ShuntStub.png">
+            <p id="Z01-sol1"></p>
+            <p id="Z02-sol1"></p>
+            <p id="Z03-sol1"></p>
+            <p id="d-sol1"></p>
+            <p id="l-sol1"></p>
+
+            <p id="ZLss-sol1"></p>
+        </div>
+        <div id="item-7">
+            <img id="solution2" src="data/img/Solution2-ShuntStub.png">
+            <p id="Z01-sol2"></p>
+            <p id="Z02-sol2"></p>
+            <p id="Z03-sol2"></p>
+            <p id="d-sol2"></p>
+            <p id="l-sol2"></p>
+
+            <p id="ZLss-sol2"></p>
+        </div>
+
+    </div>
+</div>
+<div class="text-container" id="text-container"></div>
+<script>
+    document.addEventListener("DOMContentLoaded", function () {
+        const textContainer = document.getElementById("text-container");
+        const textContent = "Nguyễn Văn Tuấn - Kỹ thuật điện tử - Cao Học 35A";
+        const delayBetweenCharacters = 50; // 0.2s
+        const pauseBeforeReset = 10000; // 10s
+
+        let index = 0;
+
+        function animateText() {
+            if (index < textContent.length) {
+                textContainer.textContent += textContent[index];
+                index++;
+                setTimeout(animateText, delayBetweenCharacters);
+            } else {
+                setTimeout(resetText, pauseBeforeReset);
+            }
+        }
+
+        function resetText() {
+            textContainer.textContent = "";
+            index = 0;
+            setTimeout(animateText, 0);
+        }
+
+        animateText();
+    });
+
+</script>
+<script src="js/jquery-3.6.1.min.js"></script>
+<script src="js/bootstrap.bundle.min.js"></script>
+<script src="js/phtk_obf.js"></script>
+<script src="js/my.js"></script>
+</body>
+</html>
